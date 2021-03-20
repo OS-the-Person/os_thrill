@@ -16,14 +16,32 @@ module.exports.validateRegisterInput = (
 			errors.email = 'email must be a valid email address'	
 		}
 	}
-	if (password === '') {
+	if (password.length > 0){
+		console.log(password)
+		console.log(confirmPassword)
+		if (password !== confirmPassword){
+			errors.password = 'passwords must match'
+		}
+	} else {
 		errors.password = 'password must not be empty'
-	} else if (password != confirmPassword) {
-		errors.password = 'passwords must match'
 	}
 
 	return {
 		errors,
 		valid: Object.keys(errors).length < 1
 	}
-} 
+}
+
+module.exports.validateLoginInput = (username, password) => {
+	const errors = {}
+	if (username.trim() === "") {
+		errors.username = "Username must not be empty"
+	}
+	if (password.trim() === "") {
+		errors.password = "Username must not be empty"
+	}
+	return {
+		errors,
+		valid: Object.keys(errors).length < 1
+	}
+}
