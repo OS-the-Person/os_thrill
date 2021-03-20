@@ -17,8 +17,6 @@ module.exports.validateRegisterInput = (
 		}
 	}
 	if (password.length > 0){
-		console.log(password)
-		console.log(confirmPassword)
 		if (password !== confirmPassword){
 			errors.password = 'passwords must match'
 		}
