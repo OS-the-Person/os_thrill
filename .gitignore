@@ -1,3 +1,4 @@
 node_modules
 config.js
-.env
+backend/.env
+.DS_Store
