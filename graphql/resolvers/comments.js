@@ -30,7 +30,6 @@ module.exports = {
 			const { username } = checkAuth(context)
 
 			const post = await Post.findById(postId)
-
 			if (post) {
 				const commentIndex = post.comments.findIndex(comment => comment.id === commentId)
 
@@ -38,12 +37,26 @@ module.exports = {
 					post.comments.splice(commentIndex, 1)
 					await post.save()
 					return post
+				} else throw new AuthenticationError("Action not allowed")
+			} else throw new UserInputError("Post not found")
+		},
+		likePost: async(_, { postId }, context) => {
+			const { username } = checkAuth(context)
+
+			const post = await Post.findById(postId)
+			
+			if (post) {
+				if (post.likes.find(like => like.username == username)){
+					post.likes = post.likes.filter(like => like.username !== username)
 				} else {
-					throw new AuthenticationError("Action not allowed")
+					post.likes.push({
+						username,
+						createdAt: new Date().toISOString()
+					})
 				}
-			} else {
-				throw new UserInputError("Post not found")
-			}
+				await post.save()
+				return post
+			} else throw new UserInputError("Post not found")
 		}
 	}
 }
