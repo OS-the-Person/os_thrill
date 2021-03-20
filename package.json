@@ -1,0 +1,29 @@
+{
+  "name": "os_thrill",
+  "version": "1.0.0",
+  "description": "twitter-like social media",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"dev": "concurrently \"cd frontend && npm start\" \"cd backend && npm run serve\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OS-the-Person/os_thrill.git"
+  },
+  "keywords": [
+    "react",
+    "twitter",
+    "node.js",
+    "graphql"
+  ],
+  "author": "ostheperson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OS-the-Person/os_thrill/issues"
+  },
+  "homepage": "https://github.com/OS-the-Person/os_thrill#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
