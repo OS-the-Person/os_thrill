@@ -6,7 +6,7 @@ module.exports = {
 	Query: {
 		async getPosts(){
 			try{
-				const posts = await Post.find().sort({ createdAt: -1 });
+				const posts = await Post.find().sort({ createdAt: -1 });// sort post in order of most recent
 				return posts;
 			} catch (err) {
 				throw new Error(err);
@@ -26,6 +26,7 @@ module.exports = {
 		}
 	},
 	Mutation: {
+		//context contains request headers for authorization
 		async createPost(_, { body }, context) {
 			const user = checkAuth(context)
 			const newPost = new Post({
@@ -38,6 +39,7 @@ module.exports = {
 			const post = await newPost.save()
 			return post
 		},
+		 
 		async deletePost(_, { postId }, context) { 
 			const user = checkAuth(context)
 
