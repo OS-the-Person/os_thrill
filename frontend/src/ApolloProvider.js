@@ -3,7 +3,7 @@ import { createHttpLink } from "apollo-link-http"
 import ApolloClient from "apollo-client"
 import { InMemoryCache } from "apollo-cache-inmemory"
 import { ApolloProvider } from "@apollo/react-hooks"
-import { gql } from '@apollo/client';
+//import { gql } from '@apollo/client';
 
 //import { ApolloClient, InMemoryCache } from '@apollo/client';
 
@@ -21,20 +21,20 @@ const client = new ApolloClient ({
 // 	cache: new InMemoryCache()
 //   });
 
-try {
-	client.query({
-		query: gql`
-		query { 
-			getPosts {
-				id
-				body
-			}
-		}`
-	})
-	.then(result => console.log(result));
-} catch (err) {
-	throw new Error(err)
-}
+// try {
+// 	client.query({
+// 		query: gql`
+// 		query { 
+// 			getPosts {
+// 				id
+// 				body
+// 			}
+// 		}`
+// 	})
+// 	.then(result => console.log(result));
+// } catch (err) {
+// 	throw new Error(err)
+// }
 
 
 export default (
